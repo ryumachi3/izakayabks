@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<%= stylesheet_link_tag 'kaisyaadd.css' %>
+	<%= stylesheet_link_tag 'kaisyarireki.css' %>
+    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:175px">
+		</div>
+
+		<div class="post">
+			<h2>会社で使ったお店　履歴追加</h2>
+			<%= form_for([@shop,@shop.use_rirekis.build]) do |f| %>
+			<% if @use_rireki.errors.any? %>
+				<div id="error_explantion">
+					<ul>
+						<% @use_rireki.errors.full_messages.each do |msg| %>
+	        		  		<li><%= msg %></li>			         
+						<% end %>
+					</ul>
+		    	</div>
+			<% end %>
+			<h2 class="shopname"><%= @shop.shopname %></h2>
+			<table border="1" summary="追加項目" class="additem">
+				<th>使った日<span class="need">*</span></th>
+				<td>
+					<%= f.date_select :use_day, :use_month_numbers => true, :date_separator => '／' %>
+				</td>
+			</tr>
+			<tr>
+				<th>イベント<span class="need">*</span></th>
+				<td><%= f.text_field :use_event %></td>
+			</tr>
+			<tr>
+				<th>参加した人数<span class="need">*</span></th>
+				<td>
+					<%= f.select(:use_number, ['3', '4' , '5', '10', '15', '20', '25', '30', '40', '50', '60', '70', '80', '90', '100'], {:selected => '15'}) %>
+					人以下
+				</td>
+			</tr>
+		</table>
+		<p class="need">
+		<strong>* 必須入力</strong>
+		</p>
+		<div class="btnarea">
+			<%= f.submit '履歴を追加する', {:class => 'btn btn-info addbtn'} %>
+		</div>	
+	<% end%>
+		</div>
+	</div>
+</body>

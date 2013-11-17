@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<link rel="stylesheet" href="css/top.css" type="text/css" />
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="#" class="selectmenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="othermenu">会社で使ったお店</a></li>
+				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:55px">
+		</div>
+
+		<div class="post">
+			<h2>イザカヤブックマークとは？</h2>
+			<p>
+			会社で使ったお店やオススメのお店をみんなで共有できる。そんなサービス。
+			</p>
+
+			<h3>会社で使ったお店</h3>
+			<p>
+			会社で使ったお店の情報をブックマークしておくことができます。<br>
+			あのお店いつ行ったっけ？去年の忘年会で行ったお店どこだっけ？を思い出すために。
+			</p>
+			<h3>個人的なオススメ！</h3>
+			<p>
+			あなたのオススメのお店をどんどんブックマークしてください。
+			</p>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+			$("input").val("URLを入力").css("color","#CCC")
+					  .one("focus",function(){
+							$(this).val("").css("color","#000");
+					  }).blur(function(){
+								if($(this).val()==""){
+									$(this).val("URLを入力").css("color","#CCC")
+											.one("focus",function(){
+										$(this).val("").css("color","#000");
+									});
+								}
+			});
+		});
+
+		$(function(){
+			$(".kuchikomi").css("display","none");
+			$(".kuchiopen").click(function(){
+				if($(".kuchikomi").css("display")=="block"){
+					$(".kuchikomi").slideUp("slow");
+					$(".kuchiopen span").text("開く　▼");
+				}else{
+					$(".kuchikomi").slideDown("slow");
+					$(".kuchiopen span").text("閉じる▲");
+				}
+			});
+		});
+	</script>
+</body>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<%= stylesheet_link_tag 'kaisyaadd.css' %>
+	<%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:175px">
+		</div>
+
+		<div class="post">
+			<h2>会社で使ったお店　追加</h2>
+			<%= form_for(@shop) do |f| %>
+				<% if @shop.errors.any? %>
+					<div id="error_explantion">
+						<ul>
+							<% @shop.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
+			<% end %>	
+			<table border="1" summary="追加項目" class="additem">
+			<tr>
+				<th width="140px">お店のURL<span class="need">*</span></th>
+				<td width="530px"><%= f.text_field :url %></td>
+			</tr>
+			<tr>
+				<th>お店の名前<span class="need">*</span></th>
+				<td><%= f.text_field :shopname %></td>
+			</tr>
+			<tr>
+				<th>最寄駅<span class="need">*</span></th>
+				<td>
+					<%= f.collection_select( :moyori_station_id,@moyori_stations,:id,:stationname) %>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					ジャンル<span class="need">*</span><br>
+					<span class="setsumei">1つ以上選択してください</span>
+				</th>
+				<td>
+					<% @genres.each do |genre| %>	
+						<label>
+							<%= f.check_box :genle_ids,
+					   		{:checked => @shop.genres.include?(genre),
+							 :name => "shop[genre_ids][]"}, genre.id,""	%>
+							 <%= genre.genre_name %>
+						 </label>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					タグ付<br>
+					<span class="setsumei">スペース区切りでタグを入力してください</span>
+				</th>
+				<td><textarea name="taguzuke" id="taguzuke"></textarea></td>
+			</tr>
+			<%= f.fields_for :use_rirekis  do |af| %>
+			<tr>
+				<th>使った日<span class="need">*</span></th>
+				<td>
+					<%= af.date_select :use_day, :use_month_numbers => true, :date_separator => '／' %>
+				</td>
+			</tr>
+			<tr>
+				<th>イベント<span class="need">*</span></th>
+				<td><%= af.text_field :use_event %></td>
+			</tr>
+			<tr>
+				<th>参加した人数<span class="need">*</span></th>
+				<td>
+					<%= af.select(:use_number, ['3', '4' , '5', '10', '15', '20', '25', '30', '40', '50', '60', '70', '80', '90', '100'], {:selected => '15'}) %>
+				人以下
+				</td>
+			</tr>
+		<% end %>
+		</table>
+		<p class="need">
+		<strong>* 必須入力</strong>
+		</p>
+		<div class="btnarea">
+			<%= f.submit 'お店を追加する', {:class => 'btn btn-info addbtn'} %>
+		</div>	
+		<% end %>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	</script>
+</body>

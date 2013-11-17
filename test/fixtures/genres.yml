@@ -1,0 +1,42 @@
+izakaya:
+  id: 1
+  genre_name: 居酒屋
+dining:
+  id: 2
+  genre_name: ダイニング
+sosaku:
+  id: 3
+  genre_name: 創作料理
+bar:
+  id: 4 
+  genre_name: バー 
+wasyoku:
+  id: 5 
+  genre_name: 和食 
+yakitori:
+  id: 6 
+  genre_name: 焼き鳥 
+tori:
+  id: 7 
+  genre_name: 鳥料理 
+kushiage:
+  id: 8 
+  genre_name: 串揚げ 
+teppan:
+  id: 9 
+  genre_name: 鉄板焼き  
+wine:
+  id: 10 
+  genre_name: ワイン 
+nabe:
+  id: 11 
+  genre_name: 鍋 
+syabusyabu:
+  id: 12 
+  genre_name: しゃぶしゃぶ 
+sukiyaki:
+  id: 13 
+  genre_name: すき焼き 
+motsunabe:
+  id: 14 
+  genre_name: もつ鍋 

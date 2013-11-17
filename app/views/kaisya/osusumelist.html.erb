@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<link rel="stylesheet" href="css/izakaya.css" type="text/css" />	
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/osusumelist.css" type="text/css" />
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div id="addheader">
+			<form>
+				<p>
+				<input type="text" value=""/>
+				<button class="btn btn-danger" type="button" onclick="location.href='osusumeadd.html'">個人的なオススメ！追加</button>
+				</p>
+			</form>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="othermenu">会社で使ったお店</a></li>
+				<li><a href="#" class="selectmenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:295px">
+		</div>
+
+		<div class="post">
+			<div class= "pagelist">
+				<ul>
+				<li><a href="#">前の10件</a></li>	
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>
+				<li><a href="#">次の10件</a></li>
+				</ul>
+			</div>
+			<hr>
+			<div class="posttext">
+			<div class="yokaset">
+			<div class="yokahuki">11</div>
+			<div class="yokahukisankaku">
+			</div>
+			<button class="yokatta"><i class="icon-heart icon-white"></i> よさそうね！</button>	
+			</div>
+			<div class="osusumetag">
+				梅野のオススメ！
+			</div>
+			<h3><a href="http://www.hotpepper.jp/strJ000980777/">アグラ ダイニング AGURA dining</a></h3>
+			<span class="label label-info">岡山駅</span>
+			<span class="label label-success">居酒屋</span>
+			<span class="label label-success">ダイニング</span>
+			<div class="hyoka">
+			<span>梅野の評価：</span>
+		  	<span class="star">★★★★★</span>
+			</div>
+			<div class="memo">
+			メモ：<br>
+			一番安い3500円のコースでも量も味も満足でした！<br>
+			店の雰囲気も料理もおしゃれな感じです。<br>
+			</div>
+			<p>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;[<a href="javascript:void(0)" class="kuchiopen">つぶやき&nbsp;1件&nbsp;を<span>開く　▼</span></a>]&nbsp;&nbsp;</span>
+			<span><button class="btn btn-mini kuchibtn" onclick="location.href='osusumetsubuadd.html'">つぶやきを追加＋</button></span>
+			</p>
+			<div class="kuchikomi">
+				<img class="smiler" src="img/smiler.png" width="50" width="50">
+				<div class="hukir">
+					<div class="kuchidel">
+					<a href="#">×</a>
+					</div>
+					★★★★★<br>
+					今度行ってみるわ！　by八木<br>
+					2013/04/28<br>
+				</div>			
+			</div>
+			<div class="space"></div>
+			<p>
+			<div class="updellink">
+				<a href="osusumeupd.html">編集</a>
+				<a href="#">削除</a>
+			</div>	
+			追加日：2013/04/26　更新日：2013/04/26
+			</p>
+			<hr>
+			<div class= "pagelist">
+				<ul>
+				<li><a href="#">前の10件</a></li>	
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>
+				<li><a href="#">次の10件</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+			$("input").val("URLを入力").css("color","#CCC")
+					  .one("focus",function(){
+							$(this).val("").css("color","#000");
+					  }).blur(function(){
+								if($(this).val()==""){
+									$(this).val("URLを入力").css("color","#CCC")
+											.one("focus",function(){
+										$(this).val("").css("color","#000");
+									});
+								}
+			});
+		});
+
+		$(function(){
+			$(".kuchikomi").css("display","none");
+			$(".kuchiopen").click(function(){
+				if($(".kuchikomi").css("display")=="block"){
+					$(".kuchikomi").slideUp("slow");
+					$(".kuchiopen span").text("開く　▼");
+				}else{
+					$(".kuchikomi").slideDown("slow");
+					$(".kuchiopen span").text("閉じる▲");
+				}
+			});
+		});
+	</script>
+</body>

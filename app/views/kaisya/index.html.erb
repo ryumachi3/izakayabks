@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<%= stylesheet_link_tag 'izakaya.css' %>
+	<%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag 'jquery.js' %>	
+	<%= javascript_include_tag 'js/bootstrap.min.js'%>
+    <%= javascript_include_tag 'jquery.raty.min.js' %>
+    <%= javascript_include_tag 'kaisya.js' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div id="addheader">
+			<%= form_tag({ :controller => 'kaisya', :action => 'new'},{:method => 'GET'}) do %>
+				<p>
+				<table>
+				<tr>
+				<td>
+					<%= text_field_tag 'shop_url' %>
+				</td>
+				<td>
+					<%= submit_tag '会社で使ったお店追加', {:class => 'btn btn-danger'} %>
+				</td>
+				</tr>
+				</table>
+				</p>
+			<% end %>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:175px">
+		</div>
+
+		<div class="post">
+			<div class= "pagelist">
+				<ul>
+					<% if (@page_one - 1) > 0 %>
+						<li><a href="/kaisya/index?page=<%= @page - 1 %>">前の10件</a></li>
+					<% end %>		
+					<% iCnt = 0 %>
+					<% (-9..9).each do |i| %>
+						<%
+							if iCnt >= 10 or iCnt >= @link_num then 
+								break
+							end	
+						%>
+						<% if (@page_one + i) > 0 then %>			
+							<% if i == 0 %>
+								<li><%= @page_one + i %></li>
+							<% else %>
+								<li><a href= "/kaisya/index?page=<%= @page + i %>"><%= @page_one + i %></a></li>
+							<% end %>	
+							<% iCnt += 1 %>
+						<% end %>
+					<% end %>
+					<% if iCnt != @page_one then  %>
+						<li><a href="/kaisya/index?page=<%= @page + 1 %>">次の10件</a></li>
+					<% end %>	
+				</ul>
+			</div>
+			<hr>
+			<div class= "posttext">
+			<% @shops.each_with_index do |shop, count| %>	
+			<div class="yokaset">
+				<%= form_tag(:controller => 'kaisya', :action => 'yokaup', :id => shop.id) do %>
+					<div class="yokahuki">
+						<!-- <div id="yokattane">--><%= shop.yoka_count %><!--</div> -->
+					</div>
+			<div class="yokahukisankaku">
+			</div>
+			<button class="yokatta" name="commit" type="submit">
+				<i class="icon-heart icon-white"></i>よかったね！
+			</button>
+			<% end %>	
+			</div>
+			<h3><%= link_to shop.shopname, shop.url %></h3>
+			<span class="label label-info"><%= shop.moyori_station.stationname %></span>
+			<% shop.genres.each do |genre| %>	
+				<span class="label label-success"><%= genre.genre_name %></span>
+			<% end %>		
+			<% shop.shops_tags.each do |shops_tag| %>
+				<span class="label label-success"><%= shops_tag.tag %></span>
+			<% end %>	
+			<table border="1" summary="履歴一覧" class="rireki">
+			<tr>
+				<th width="80px">使った日</th>
+				<th width="390px">イベント</th>
+				<th width="100px">参加した人数</th>
+				<th width="30px" class="insbtn"><%= link_to '＋', new_shop_use_rireki_path(shop), class: "btn btn-mini" %></th>
+			</tr>
+			<% shop.use_rirekis.each do |use_rireki| %>
+			<tr>
+				<td><%= use_rireki.use_day.strftime('%Y/%m/%d') %></td><td><%= use_rireki.use_event %></td><td><%= use_rireki.use_number %>名程度</td>
+				<td class="delbtn"> <%= link_to '×', shop_use_rireki_path(shop, use_rireki), :confirm => 'この履歴を削除しますか？', :method => :delete %></td>
+			</tr>
+			<% end %>
+			</table>
+			<span>平均：</span>
+			<% if shop.heikin_hyouka.nil? then %>
+                <span class="big_star00"></span>
+			<% elsif shop.heikin_hyouka >= 0 && shop.heikin_hyouka < 0.5 then %>
+				<span class="big_star00"></span>
+			<% elsif  shop.heikin_hyouka >= 0.5 && shop.heikin_hyouka < 1 then %>
+				<span class="big_star05"></span>
+			<% elsif  shop.heikin_hyouka >= 1 && shop.heikin_hyouka < 1.5 then %>
+				<span class="big_star10"></span>
+			<% elsif  shop.heikin_hyouka >= 1.5 && shop.heikin_hyouka < 2 then %>
+			    <span class="big_star15"></span>
+			<% elsif  shop.heikin_hyouka >= 2 && shop.heikin_hyouka < 2.5 then %>
+	            <span class="big_star20"></span>
+			<% elsif  shop.heikin_hyouka >= 2.5 && shop.heikin_hyouka < 3 then %>
+	            <span class="big_star25"></span>
+			<% elsif  shop.heikin_hyouka >= 3 && shop.heikin_hyouka < 3.5 then %>
+	            <span class="big_star30"></span>
+			<% elsif  shop.heikin_hyouka >= 3.5 && shop.heikin_hyouka < 4 then %>
+	            <span class="big_star35"></span>
+            <% elsif  shop.heikin_hyouka >= 4 && shop.heikin_hyouka < 4.5 then %>
+                <span class="big_star40"></span>
+            <% elsif  shop.heikin_hyouka >= 4.5 && shop.heikin_hyouka < 5 then %>
+                <span class="big_star45"></span>
+            <% elsif  shop.heikin_hyouka == 5 then %>
+				<span class="big_star50"></span>
+			<% else %>
+                <span class="big_star00"></span>
+			<% end %>				
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;[
+				<% if  shop.kuchikomis.length != 0 then %>
+					<a href="javascript:void(0)" class="kuchiopen<%= count %>">口コミ&nbsp;<%= shop.kuchikomis.length  %>件&nbsp;を<span>開く　▼</span></a>
+				<% else %>
+					口コミ&nbsp;0件
+				<% end %>
+				]&nbsp;&nbsp;
+			</span>
+			<span>
+				<%= link_to '口コミを追加＋', new_shop_kuchikomi_path(shop), class: "btn btn-mini kuchibtn" %>
+			</span>
+			<div class="kuchikomi<%= count %>">
+				<% shop.kuchikomis.each_with_index do |kuchikomi, kCnt| %>
+					<% 
+					  if kCnt % 2 == 0 then 
+						#右側に吹き出し  
+						smileimg = 'smiler.png'
+						imgclass = 'smiler'
+						hukiclass = 'hukir'
+			 		   else	
+				   		#左側に吹き出し
+						smileimg = 'smilel.png'
+						imgclass = 'smilel'
+						hukiclass = 'hukil'
+					  end
+					%>
+					<%= image_tag smileimg, :width => '50', :height => '50', :class => imgclass %>
+					<div class="<%= hukiclass %>">
+						<div class="kuchidel">
+						<%= link_to '×', shop_kuchikomi_path(shop, kuchikomi), :confirm => 'この口コミを削除しますか？', :method => :delete %>
+						</div>
+						<% if kuchikomi.hyouka == 1 then %>
+							<div class="mini_star1"></div>
+						<% elsif kuchikomi.hyouka == 2 then %>
+							<div class="mini_star2"></div>
+						<% elsif kuchikomi.hyouka == 3 then %>
+							<div class="mini_star3"></div>
+						<% elsif kuchikomi.hyouka == 4 then %>
+							<div class="mini_star4"></div>
+						<% elsif kuchikomi.hyouka == 5 then %>
+							<div class="mini_star5"></div>
+						<% end %>
+						<%= kuchikomi.kuchi_text %><br>
+						by&nbsp;<%= kuchikomi.kuchi_person_name %><br>
+						<%= kuchikomi.created_at.strftime('%Y/%m/%d') %><br>
+					</div>			
+				<% end %>
+			</div>
+			<div class="space"></div>
+			<p>
+			<div class="updellink">
+				<%= link_to '編集', edit_shop_path(shop) %>
+				<%= link_to '削除', shop, :confirm => '本当にこのお店を削除しますか？', :method => :delete %>
+			</div>	
+			追加日：<%= shop.created_at.strftime('%Y/%m/%d') %>　更新日：<%= shop.updated_at.strftime('%Y/%m/%d') %>
+			</p>
+			<hr>
+			<% end %>
+			</div>
+			<div class= "pagelist">
+				<ul>
+					<% if (@page_one - 1) > 0 %>
+						<li><a href="/kaisya/index?page=<%= @page - 1 %>">前の10件</a></li>
+					<% end %>		
+					<% iCnt = 0 %>
+					<% (-9..9).each do |i| %>
+						<%
+							if iCnt >= 10 or iCnt >= @link_num then 
+								break
+							end	
+						%>
+						<% if (@page_one + i) > 0 then %>			
+							<% if i == 0 %>
+								<li><%= @page_one + i %></li>
+							<% else %>
+								<li><a href= "/kaisya/index?page=<%= @page + i %>"><%= @page_one + i %></a></li>
+							<% end %>	
+							<% iCnt += 1 %>
+						<% end %>
+					<% end %>
+					<% if iCnt != @page_one then  %>
+						<li><a href="/kaisya/index?page=<%= @page + 1 %>">次の10件</a></li>
+					<% end %>	
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$("#shop_url").val("URLを入力").css("color","#CCC")
+					  .one("focus",function(){
+							$(this).val("").css("color","#000");
+					  }).blur(function(){
+								if($(this).val()==""){
+									$(this).val("URLを入力").css("color","#CCC")
+											.one("focus",function(){
+										$(this).val("").css("color","#000");
+									});
+								}
+			});
+		});
+		
+		
+ 		<%
+	    	i=0
+			while i < @shops.length
+		%>
+		$(function(){
+			$(".kuchikomi<%=i%>").css("display","none");
+			$(".kuchiopen<%=i%>").click(function(){
+				if($(".kuchikomi<%=i%>").css("display")=="block"){
+						$(".kuchikomi<%=i%>").slideUp("normal");
+						$(".kuchiopen<%=i%> span").text("開く　▼");
+					}else{
+						$(".kuchikomi<%=i%>").slideDown("slow");
+						$(".kuchiopen<%=i%> span").text("閉じる▲");
+					}
+				});
+		});
+  		<%
+	    	i += 1
+			end
+		%>
+</script>
+</body>

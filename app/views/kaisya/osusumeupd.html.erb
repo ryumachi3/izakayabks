@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+	<link rel="stylesheet" href="css/kaisyaadd.css" type="text/css" />
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="#" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:295px">
+		</div>
+
+		<div class="post">
+			<h2>個人的なオススメ！　編集</h2>
+			<form>
+			<table border="1" summary="追加項目" class="additem">
+			<tr>
+				<th width="140px">お店のURL<span class="need">*</span></th>
+				<td width="530px"><input type="text" id="shopurl"></td>
+			</tr>
+			<tr>
+				<th>あなたの名前<span class="need">*</span></th>
+				<td><input type="text" id="yourname"></td>
+			</tr>
+			<tr>
+				<th>お店の名前<span class="need">*</span></th>
+				<td><input type="text" id="shopname"></td>
+			</tr>
+			<tr>
+				<th>最寄駅<span class="need">*</span></th>
+				<td>
+					<select id="station" name="station">
+						<option value="okayama">岡山駅</option>
+						<option value="kurashiki">倉敷駅</option>
+						<option value="nakasyo">中庄駅</option>
+						<option value="other">その他</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					ジャンル<span class="need">*</span><br>
+					<span class="setsumei">1つ以上選択してください</span>
+				</th>
+				<td>
+					<input type="checkbox" name="category" value="category001">居酒屋</input>
+					<input type="checkbox" name="category" value="category002">ダイニングバー</input>
+					<input type="checkbox" name="category" value="category003">バー</input>
+					<input type="checkbox" name="category" value="category004">創作料理</input>
+					<input type="checkbox" name="category" value="category005">和食</input>
+					<input type="checkbox" name="category" value="category006">焼鳥</input>
+					<input type="checkbox" name="category" value="category007">鳥料理</input>
+					<input type="checkbox" name="category" value="category008">串揚げ</input>
+					<input type="checkbox" name="category" value="category009">鉄板焼き</input>
+					<input type="checkbox" name="category" value="category010">ワイン</input><br>
+					<input type="checkbox" name="category" value="category011">鍋</input>
+					<input type="checkbox" name="category" value="category012">しゃぶしゃぶ</input>
+					<input type="checkbox" name="category" value="category013">すき焼き</input>
+					<input type="checkbox" name="category" value="category014">もつ鍋</input>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					タグ付<br>
+					<span class="setsumei">スペース区切りでタグを入力してください</span>
+				</th>
+				<td><textarea name="comment" id="tagduke"></textarea></td>
+			</tr>
+			<tr>
+				<th>評価<br>
+				<span class="setsumei">星の数で評価してください</span>
+				</th>
+				<td>
+				<span class="star">★★★★★</span>
+				</td>	
+			</tr>
+			<tr>
+				<th>メモ<br>
+				<span class="setsumei">このお店のメモを自由に記入してください</span>
+				</th>
+				<td><textarea name="comment" id="memo" class="span7" rows="3" maxlength="282"></textarea></td>
+			</table>
+		<p class="need">
+		<strong>* 必須入力</strong>
+		</p>
+		<div class="btnarea">
+			<button class="btn btn-info addbtn" type="button" onclick="location.href='osusumelist.html'">変更を保存する</button>
+		</div>	
+		</form>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	</script>
+</body>

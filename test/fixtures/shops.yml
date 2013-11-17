@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  shopname: MyString
+  station_id: 1
+  yoka_count: 1
+  kaisya_flag: 1
+  osusume_person: MyString
+  memo: MyText
+  kojin_hyouka: 1
+  yosa_count: 1
+
+two:
+  url: MyString
+  shopname: MyString
+  station_id: 1
+  yoka_count: 1
+  kaisya_flag: 1
+  osusume_person: MyString
+  memo: MyText
+  kojin_hyouka: 1
+  yosa_count: 1

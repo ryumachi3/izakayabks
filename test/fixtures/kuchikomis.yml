@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop_id: MyString
+  kuchi_person_name: MyString
+  hyouka: 1
+  kuchi_text: MyText
+
+two:
+  shop_id: MyString
+  kuchi_person_name: MyString
+  hyouka: 1
+  kuchi_text: MyText

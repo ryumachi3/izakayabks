@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop_id: 1
+  use_day: 2013-08-07
+  use_event: MyString
+  use_number: 1
+
+two:
+  shop_id: 1
+  use_day: 2013-08-07
+  use_event: MyString
+  use_number: 1

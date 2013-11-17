@@ -1,0 +1,143 @@
+#container	{width: 760px;
+			 margin: auto;}
+
+#content	{margin: 30px 0;}
+
+#header h1	{margin: 10px 5px;
+			 font-size: 2em;}
+
+#header h1 a {text-decoration: none;
+			  color: #000000;}
+
+#header p 	{margin: 0;
+			 margin-top: 8px;
+			 font-size: 1em;}
+
+#footer		{clear: both;
+			font-size: 0.75em;
+			width: 760px;
+			height: 30px;
+			margin: 0;
+			background-color: #000000;}
+
+#footer p {color: #ffffff;}
+
+#addheader	 {margin-top: 15px;
+			 margin-bottom: 15px;}
+
+#addheader input {margin:0; 
+				 width: 500px;}
+
+.menu		{font-size: 0.75em;
+			width: 760px;
+			height: 30px;
+			background-color: #000000;}
+
+.menu ul	{margin: 0;
+			padding: 0;}
+
+.menu li	{list-style-type: none;
+			float: left;}
+
+.menu li a	{display: block;
+			width: 120px;
+			line-height: 30px;
+			border-right: solid 1px #ffffff;
+			color: #ffffff;
+			text-align: center;
+			text-decoration: none;}
+
+.menu li a.othermenu:hover {background-color: #696969;}
+
+.hukidashi	{border:solid #000000;
+			border-color:#000000 transparent transparent;
+			border-width:5px 5px 0;
+			width:0;
+            margin-left:175px;}
+
+.post		{color: #808080;
+			width: 680px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			margin-left: auto;
+			margin-right: auto;}
+
+.post h2	{font-size: 0.85em;
+			color: #696969;
+			background-color: #dcdcdc;
+			line-height: 36px;
+			padding-left: 10px;
+			margin-bottom: 20px;}
+
+.post hr    {clear: both;
+			 margin: 0;
+			 padding: 0;
+			 margin-bottom: 10px;}
+
+.pagelist		{margin-left:auto;
+				 width: 320px;}
+
+.pagelist li a	{font-size: 0.75em;
+				color: #808080;
+				text-decoration: none;}
+
+.pagelist li a:hover {color: #ffaa00;}
+
+.pagelist li	{display: inline;
+				list-style-type: none;
+				margin-right:10px;}
+
+.pagelist ul	{margin: 0;
+				padding: 0;
+				margin-bottom: 10px;} 	
+
+.posttext	{font-size: 0.875em;
+			line-height: 1.5;}
+
+.posttext p	{clear: both;
+			margin: 0;
+			margin-bottom: 10px;}
+
+.posttext h3	{margin:0;
+				padding:0;}
+
+table			{border-color: #f0f0f0;
+				font-size: 0.8em;
+				border-left: none;
+				border-right: none;
+				width: 680px;
+				margin-top: 0px;
+				margin-bottom: 15px;}
+
+th,td			{border-left:none;
+				border-right:none;
+				padding: 10px 10px;
+				text-align: left;}
+
+th			{font-size: 0.8em;
+			background-color: #c0c0c0;}
+
+#error_explantion 	{color: #ff0000;}
+
+.need		{color: #ff0000;}
+
+.setsumei	{color: #a9a9a9;}
+
+#shop_url	{width: 510px;}
+
+span.star	{font-size: 2em;}
+
+.space		{clear: both;}
+
+.btnarea	{text-align: center;
+			padding-top:  15px;
+			padding-bottom: 15px;
+			background-color: #c0c0c0;}
+
+#shop_use_rirekis_attributes_0_use_day_1i	{width: 80px;}
+#shop_use_rirekis_attributes_0_use_day_2i	{width: 60px;}
+#shop_use_rirekis_attributes_0_use_day_3i	{width: 60px;}
+
+#shop_use_rirekis_attributes_0_use_number	{width: 60px;}
+
+textarea #kuchikomi {width:300px;}

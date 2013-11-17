@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+okayama: 
+  id: 1 
+  stationname: 岡山駅 
+ 
+kurashiki: 
+  id: 2 
+  stationname: 倉敷駅 
+ 
+nakasyo: 
+  id: 3 
+  stationname: 中庄駅 
+ 
+sonota: 
+  id: 4 
+  stationname: その他

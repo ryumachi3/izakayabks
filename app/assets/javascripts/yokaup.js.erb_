@@ -1,0 +1,4 @@
+$('yokattane').html(
+	 "<%= escape_javascript(@shop.yoka_count) %>"
+	 );
+
