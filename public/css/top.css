@@ -1,0 +1,96 @@
+body		{background-color: #fff;}
+
+#container	{width: 760px;
+			 margin: auto;}
+
+#content	{margin: 30px 0;}
+
+#header h1	{margin: 10px 5px;
+			 font-size: 2em;}
+
+#header h1 a {text-decoration: none;
+			  color: #000000;}
+
+#header p 	{margin: 0;
+			 margin-top: 8px;
+			 font-size: 1em;}
+
+#footer		{clear: both;
+			font-size: 0.75em;
+			width: 760px;
+			height: 30px;
+			margin: 0;
+			background-color: #000000;}
+
+#footer p {color: #ffffff;}
+
+#addheader	 {margin-top: 15px;
+			 margin-bottom: 15px;}
+
+#addheader input {margin:0; 
+				 width: 500px;}
+
+.menu		{font-size: 0.75em;
+			width: 760px;
+			height: 30px;
+			background-color: #000000;}
+
+.menu ul	{margin: 0;
+			padding: 0;}
+
+.menu li	{list-style-type: none;
+			float: left;}
+
+.menu li a	{display: block;
+			width: 120px;
+			line-height: 30px;
+			border-right: solid 1px #ffffff;
+			color: #ffffff;
+			text-align: center;
+			text-decoration: none;}
+
+.menu li a.othermenu:hover {background-color: #696969;}
+
+.hukidashi	{border:solid #000000;
+			border-color:#000 transparent transparent;
+			border-width:5px 5px 0;
+			width:0;
+}
+
+.topimage		{background-image: url(../assets/izakaya_head1.png);
+			background-position: right bottom;
+			background-repeat: no-repeat;
+			width: 760px;
+			height: 430px;
+			margin: 0;}
+
+
+.post		{color: #808080;
+			width: 680px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			margin-left: auto;
+			margin-right: auto;}
+
+.post h2	{font-size: 2.0em;
+			color: #000;
+			line-height: 36px;
+			margin-top: 40px;
+			margin-bottom: 5px;}
+
+.post h3	{font-size: 1.5em;
+			color: #000000;}
+
+.post hr    {clear: both;
+			 margin: 0;
+			 padding: 0;
+			 margin-bottom: 10px;}
+
+.posttext	{font-size: 0.875em;
+			line-height: 1.5;}
+
+.posttext p	{clear: both;
+			margin: 0;
+			margin-bottom: 10px;}
+
+	

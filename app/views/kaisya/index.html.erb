@@ -4,18 +4,12 @@
 	<meta http-equiv="Content-Type"
 		content="text/html;charset=utf-8" />
 	<title>イザカヤブックマーク</title>
-	<%= stylesheet_link_tag 'izakaya.css' %>
-	<%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
-	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag 'jquery.js' %>	
-	<%= javascript_include_tag 'js/bootstrap.min.js'%>
-    <%= javascript_include_tag 'jquery.raty.min.js' %>
-    <%= javascript_include_tag 'kaisya.js' %>
+	<%= stylesheet_link_tag    "application" %>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+			<h1><a href="/top">イザカヤブックマーク</a></h1>
 		</div>
 
 		<div id="addheader">
@@ -37,9 +31,9 @@
 
 		<div class="menu">
 			<ul>
-				<li><a href="index.html" class="othermenu">TOP</a></li>
-				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
-				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+				<li><a href="/top" class="othermenu">TOP</a></li>
+				<li><a href="/kaisya/index" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="#" class="othermenu">個人的なオススメ！</a></li>
 			</ul>
 		</div>
 		<div class="hukidashi" style="margin-left:175px">
@@ -47,6 +41,7 @@
 
 		<div class="post">
 			<div class= "pagelist">
+				<% if @link_num > 1 then %>
 				<ul>
 					<% if (@page_one - 1) > 0 %>
 						<li><a href="/kaisya/index?page=<%= @page - 1 %>">前の10件</a></li>
@@ -71,6 +66,7 @@
 						<li><a href="/kaisya/index?page=<%= @page + 1 %>">次の10件</a></li>
 					<% end %>	
 				</ul>
+				<% end %>
 			</div>
 			<hr>
 			<div class= "posttext">
@@ -197,6 +193,7 @@
 			<% end %>
 			</div>
 			<div class= "pagelist">
+				<% if @link_num > 1 then %>
 				<ul>
 					<% if (@page_one - 1) > 0 %>
 						<li><a href="/kaisya/index?page=<%= @page - 1 %>">前の10件</a></li>
@@ -221,12 +218,14 @@
 						<li><a href="/kaisya/index?page=<%= @page + 1 %>">次の10件</a></li>
 					<% end %>	
 				</ul>
+				<% end %>
 			</div>
 		</div>
 	</div>
+	<%= javascript_include_tag "application" %>
 	<script>
 		$(function(){
-			$("#shop_url").val("URLを入力").css("color","#CCC")
+			$("#shop_url").val("お店のURLを入力").css("color","#CCC")
 					  .one("focus",function(){
 							$(this).val("").css("color","#000");
 					  }).blur(function(){
@@ -237,6 +236,7 @@
 									});
 								}
 			});
+
 		});
 		
 		

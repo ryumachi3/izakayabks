@@ -31,7 +31,7 @@ class KaisyaController < ApplicationController
 		@shop.use_rirekis.build
 
 		url_str = params[:shop_url]
-		if "URLを入力" != url_str then
+		if "お店のURLを入力" != url_str then
 			@shop.url = url_str
 		end
 		#@shop.build_use_rireki
