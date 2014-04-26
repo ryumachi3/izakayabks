@@ -1,4 +1,4 @@
-body		{background-color: #ffffff;}
+body		{background-color: #000000;}
 
 #container	{width: 760px;
 			 margin: auto;}
@@ -27,8 +27,8 @@ body		{background-color: #ffffff;}
 #addheader	 {margin-top: 15px;
 			 margin-bottom: 15px;}
 
-#shop_url {margin:0; 
-				 width: 500px;}
+#shop_url,#osusume_url {margin:0; 
+						width: 500px;}
 
 .menu		{font-size: 0.75em;
 			width: 760px;
@@ -137,6 +137,7 @@ table.rireki th,td	{border-top: none;
 					border-right: none;
 					padding: 0px 8px;
 					text-align: left;}
+
 table.rireki th.insbtn,td.delbtn {text-align: right;}
 
 table.rireki th button	{font-size: 0.7em;
@@ -201,73 +202,57 @@ table.rireki td.delbtn a:hover {color: #ff0000;
 				right: 100%;
 				top: 10px;}
 
-.kuchidel	{float: right;}
+.hukir p { 
+                	 margin-top: 0px;
+                	 margin-bottom: 0px;
+				   }
+
+.kuchiopen a {
+	text-decoration: none;	
+}
+
+.kuchiopen a:hover {
+	text-decoration: none;	
+}
+
+.kuchidel,.tsubudel	{
+                    margin-top: 0px;
+                    margin-bottom: 0px;						
+						float: right;}
 
 .kuchidel a	{color: #808080;
 			text-decoration: none;}
 
-.kuchidel a:hover {color: #000000;}
+.kuchidel a:hover {color: #ff0000;
+				font-weight:bold;
+				text-decoration: none;}
 
+.tsubudel a	{color: #808080;
+			text-decoration: none;}
 
+.tsubudel a:hover {color: #ff0000;
+                font-weight:bold;
+				text-decoration: none;}
 
+.hyoka  {margin-top: 10px;
+		margin-bottom: 10px;}
 
-
-
-
-.posttext h3    {margin:0;
-                padding:0;}
-
-table.edit      {border-color: #f0f0f0;
-                font-size: 0.8em;
-                border-left: none;
-                border-right: none;
-                width: 680px;
-                margin-top: 0px;
-                margin-bottom: 15px;}
-
-table.edit th,td {border-left:none;
-                border-right:none;
-                padding: 10px 10px;
-                text-align: left;}
-
-table.edit th    {font-size: 0.8em;
-            background-color: #c0c0c0;}
-
-#error_explantion   {color: #ff0000;}
-
-.need       {color: #ff0000;}
-
-.setsumei   {color: #a9a9a9;}
-
-#shop_url   {width: 510px;}
-
-span.star   {font-size: 2em;}
-
-.space      {clear: both;}
-
-.btnarea    {text-align: center;
-            padding-top:  15px;
-            padding-bottom: 15px;
-            background-color: #c0c0c0;}
-
-#shop_use_rirekis_attributes_0_use_day_1i   {width: 80px;}
-#shop_use_rirekis_attributes_0_use_day_2i   {width: 60px;}
-#shop_use_rirekis_attributes_0_use_day_3i   {width: 60px;}
-
-#shop_use_rirekis_attributes_0_use_number   {width: 60px;}
-
-textarea #kuchikomi {width:300px;}
-
-h2.shopname     {
-        margin: 0;
-        background-color:#000000;
-        color:  #ffffff;
+.osusumetag {
+	color: #000000;
+	background-color: #008000;
+	width: 160px;
+	padding: 5px 10px;
+	text-align: center;	
 }
 
-#use_rireki_use_day_1i   {width: 80px;}
-#use_rireki_use_day_2i   {width: 60px;}
-#use_rireki_use_day_3i   {width: 60px;}
+.hyoka	{
+	margin-top:10px;
+	margin-bottom:10px;
+}
 
-#use_rireki_use_number   {width: 60px;}
+.memo	{
+	width: 570px;
+	margin-bottom: 15px;
+}
 
 
