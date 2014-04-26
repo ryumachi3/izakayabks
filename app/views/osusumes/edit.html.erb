@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+    <%= stylesheet_link_tag 'kaisyaadd.css' %>
+    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="#" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:295px">
+		</div>
+
+		<div class="post">
+			<h2>個人的なオススメ！　編集</h2>
+            <%= form_for(@osusume) do |f| %>
+                <% if @osusume.errors.any? %>
+                    <div id="error_explantion">
+                    <ul><% @osusume.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                    </div>
+                <% end %>
+			
+			<table border="1" summary="追加項目" class="additem">
+			<tr>
+				<th width="140px">お店のURL<span class="need">*</span></th>
+		        <td width="530px"><%= f.text_field :url %></td>	
+			</tr>
+			<tr>
+				<th>あなたの名前<span class="need">*</span></th>
+				<td width="530px"><%= f.collection_select( :user_id,@users,:id,:user_name) %></td>
+			</tr>
+			<tr>
+				<th>お店の名前<span class="need">*</span></th>
+				<td><%= f.text_field :shopname %></td>
+			</tr>
+			<tr>
+				<th>最寄駅<span class="need">*</span></th>
+				<td>
+					 <%= f.collection_select( :moyori_station_id,@moyori_stations,:id,:stationname) %>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					ジャンル<span class="need">*</span><br>
+					<span class="setsumei">1つ以上選択してください</span>
+				</th>
+				<td>
+                  <% @genres.each do |genre| %>
+                   <label>
+                   <%= f.check_box :genle_ids,
+                         {:checked => @osusume.genres.include?(genre),
+                           :name => "osusume[genre_ids][]"}, genre.id,"" %>
+                   <%= genre.genre_name %>
+                   </label>
+                  <% end %>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					タグ付<br>
+					<span class="setsumei">スペース区切りでタグを入力してください</span>
+				</th>
+		        <td><textarea name="taguzuke" id="taguzuke"><%= @tag_text %></textarea></td>	
+			</tr>
+			<tr>
+				<th>評価<br>
+				<span class="setsumei">星の数で評価してください</span>
+				</th>
+				<td>
+					<div id="kojin_hyouka"></div>
+				</td>	
+			</tr>
+			<tr>
+				<th>メモ<br>
+				<span class="setsumei">このお店のメモを自由に記入してください</span>
+				</th>
+				<td><%= f.text_area :memo, {:rows => 5 } %></td>
+			</table>
+		<p class="need">
+		<strong>* 必須入力</strong>
+		</p>
+		<div class="btnarea">
+             <%= f.submit '変更を保存する', {:class => 'btn btn-info addbtn'} %>
+		</div>	
+		<% end %>
+		</div>
+	</div>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'jquery.js' %>
+    <%= javascript_include_tag 'js/bootstrap.min.js'%>
+    <%= javascript_include_tag 'jquery.raty.min.js' %>
+	<script>
+    $('#kojin_hyouka').raty({
+		size     : 36,
+		score    : <%= @osusume.kojin_hyouka %>,
+        starOff: '/assets/star-off.png',
+        starOn : '/assets/star-on.png',
+        scoreName: 'osusume[kojin_hyouka]' 
+    });
+	</script>
+</body>

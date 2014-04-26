@@ -58,7 +58,10 @@ Izakaya::Application.routes.draw do
 		resources :use_rirekis
 		resources :kuchikomis
 	end
-	
+	resources :osusumes do
+	   resources :tsubuyakis
+	end	   
+	resources :users
 	match ':controller(/:action(/:id))(.:format)'
 
 end

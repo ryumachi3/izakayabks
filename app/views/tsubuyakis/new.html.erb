@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+    <%= stylesheet_link_tag 'kaisyaadd.css' %>
+    <%= stylesheet_link_tag 'kaisyarireki.css' %>
+    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
+				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:175px">
+		</div>
+
+		<div class="post">
+			<h2>個人的なオススメ！　つぶやき追加</h2>
+            <%= form_for([@osusume,@osusume.tsubuyakis.build]) do |f| %>
+                <% if @tsubuyaki.errors.any? %>
+                    <div id="error_explantion">
+                        <ul>
+                            <% @tsubuyaki.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+             <h2 class="shopname"><%= @osusume.shopname %></h2>
+			</tr>
+			<table border="1" summary="追加項目" class="additem">
+			<tr>
+				<th width="140px">あなたの名前<span class="need">*</span></th>
+				<td width="530px">
+					<%= f.collection_select( :user_id,@users,:id,:user_name) %>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					つぶやき<span class="need">*</span>
+				</th>
+				<td><%= f.text_area :tsubu_text, {:class => 'span5', :rows => 6, :maxlength => 140}  %></td>
+			</tr>
+		</table>
+		<p class="need">
+		<strong>* 必須入力</strong>
+		</p>
+		<div class="btnarea">
+			<%= f.submit 'つぶやきを追加する', {:class => 'btn btn-info addbtn'} %>
+		</div>	
+	<% end %>	
+		</div>
+	</div>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'jquery.js' %>
+    <%= javascript_include_tag 'js/bootstrap.min.js'%>
+	<script>
+	</script>
+</body>

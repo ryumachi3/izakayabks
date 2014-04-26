@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+    <%= stylesheet_link_tag 'izakaya.css' %>
+    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div id="addheader">
+			<%= form_tag({ :controller => 'osusumes', :action => 'new'},{:method => 'GET'}) do %>
+				<p>
+				<table>
+				<tr>
+				<td>
+					<%= text_field_tag 'osusume_url' %>
+				</td>
+				<td>
+					<%= submit_tag '個人的なオススメ！追加', {:class => 'btn btn-danger'} %>
+				</td>
+				</tr>
+				</table>
+				</p>
+			<% end %>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="othermenu">会社で使ったお店</a></li>
+				<li><a href="#" class="selectmenu">個人的なオススメ！</a></li>
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:295px">
+		</div>
+
+		<div class="post">
+			<div class= "pagelist">
+				<ul>
+					<% if (@link_num > 1)%>   
+					<% if (@page_one - 1) > 0 %>
+						 <li><a href="/osusumes/index?page=<%= @page - 1 %>">前の10件</a></li>
+					 <% end %>
+					 <% iCnt = 0 %>
+					 <% (-9..9).each do |i| %>
+						 <%
+							 if iCnt >= 10 or iCnt >= @link_num then
+								 break
+							 end
+						 %>
+						 <% if (@page_one + i) > 0 then %>
+							 <% if i == 0 %>
+								 <li><%= @page_one + i %></li>
+							 <% else %>
+								 <li><a href= "/osusumes?page=<%= @page + i %>"><%= @page_one + i %></a></li>
+							 <% end %>
+							 <% iCnt += 1 %>
+						 <% end %>
+					 <% end %>
+					 <% if iCnt != @page_one then  %>
+						 <li><a href="/osusumes?page=<%= @page + 1 %>">次の10件</a></li>
+					 <% end %>
+					<% end %>
+				 </ul>
+			</div>
+			<hr>
+			<div class="posttext">
+  			<% @osusumes.each_with_index do |osusume, count| %>
+			<div class="yokaset">
+                <%= form_tag(:controller => 'osusumes', :action => 'yosaup', :id => osusume.id) do %>
+                    <div class="yokahuki">
+                        <%= osusume.yosa_count %>
+                    </div>
+					<div class="yokahukisankaku">
+					</div>
+					<button class="yokatta" name="commit" type="submit">
+					<i class="icon-heart icon-white"></i> よさそうね！
+				</button>	
+				<% end %>
+			</div>
+			<div class="osusumetag" style="background:<%= osusume.user.color %>">
+				<%= osusume.user.user_name %>のオススメ！
+			</div>
+			<h3><%= link_to osusume.shopname, osusume.url %></h3>
+            <span class="label label-info"><%= osusume.moyori_station.stationname %></span>
+            <% osusume.genres.each do |genre| %>
+                <span class="label label-success"><%= genre.genre_name %></span>
+            <% end %>
+            <% osusume.osusumes_tags.each do |osusumes_tag| %>
+                <span class="label label-success"><%= osusumes_tag.tag %></span>
+            <% end %>
+			<div class="hyoka">
+			<span><%= osusume.user.user_name %>の評価：</span>
+            <% if osusume.kojin_hyouka.nil? then %>
+                <span class="big_star00"></span>
+            <% elsif osusume.kojin_hyouka >= 0 && osusume.kojin_hyouka < 1 then %>
+                <span class="big_star00"></span>
+            <% elsif  osusume.kojin_hyouka >= 1 && osusume.kojin_hyouka < 2 then %>
+                <span class="big_star10"></span>
+            <% elsif  osusume.kojin_hyouka >= 2 && osusume.kojin_hyouka < 3 then %>
+                <span class="big_star20"></span>
+            <% elsif  osusume.kojin_hyouka >= 3 && osusume.kojin_hyouka < 4 then %>
+                <span class="big_star30"></span>
+            <% elsif  osusume.kojin_hyouka >= 4 && osusume.kojin_hyouka < 5 then %>
+                <span class="big_star40"></span>
+            <% elsif  osusume.kojin_hyouka == 5 then %>
+                <span class="big_star50"></span>
+            <% else %>
+                <span class="big_star00"></span>
+            <% end %>
+			</div>
+			<div class="memo">
+			メモ：<br>
+			<%= simple_format(osusume.memo) %>
+			</div>
+			<p>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;[
+                 <% if  osusume.tsubuyakis.length != 0 then %>
+                     <a href="javascript:void(0)" class="kuchiopen<%= count %>">つぶやき&nbsp;<%= osusume.tsubuyakis.length  %>件&nbsp;を<span>開く　▼</span></a>
+                 <% else %>
+                     つぶやき&nbsp;0件
+                 <% end %>
+                 ]&nbsp;&nbsp;
+             </span>
+             <span>
+                 <%= link_to 'つぶやきを追加＋', new_osusume_tsubuyaki_path(osusume), class: "btn btn-mini kuchib
+ tn" %>
+             </span>
+             <div class="kuchikomi<%= count %>">
+                 <% osusume.tsubuyakis.each_with_index do |tsubuyaki, kCnt| %>
+                     <%
+                       if kCnt % 2 == 0 then
+                         #右側に吹き出し  
+                         smileimg = 'smiler.png'
+                         imgclass = 'smiler'
+                         hukiclass = 'hukir'
+                        else
+                         #左側に吹き出し
+                         smileimg = 'smilel.png'
+                         imgclass = 'smilel'
+                         hukiclass = 'hukil'
+                       end
+                     %>
+                     <%= image_tag smileimg, :width => '50', :height => '50', :class => imgclass %>
+                     <div class="<%= hukiclass %>">
+						 <div class="tsubudel">
+                         <%= link_to '×', osusume_tsubuyaki_path(osusume, tsubuyaki), :confirm => 'このつぶやきを
+ 削除しますか？', :method => :delete %>
+                         </div>
+						 <%= tsubuyaki.tsubu_text %><br>
+                         by&nbsp;<%= tsubuyaki.user.user_name %><br>
+                         <%= tsubuyaki.created_at.strftime('%Y/%m/%d') %><br>
+					 </div>
+		 		<% end %>
+			</div>
+			<div class="space"></div>
+			<p>
+			<div class="updellink">
+			    <%= link_to '編集', edit_osusume_path(osusume) %>
+                <%= link_to '削除', osusume, :confirm => '本当にこのお店を削除しますか？', :method => :delete %>
+            </div>
+            追加日：<%= osusume.created_at.strftime('%Y/%m/%d') %>　更新日：<%= osusume.updated_at.strftime('%Y/%m/%d') %>
+			</p>
+			<hr>
+		<% end %>
+			</div>
+			<div class= "pagelist">
+				<ul>
+					<% if (@link_num > 1)%>   
+					<% if (@page_one - 1) > 0 %>
+                        <li><a href="/osusumes/index?page=<%= @page - 1 %>">前の10件</a></li>
+                    <% end %>
+                    <% iCnt = 0 %>
+                    <% (-9..9).each do |i| %>
+                        <%
+                            if iCnt >= 10 or iCnt >= @link_num then
+                                break
+                            end
+                        %>
+                        <% if (@page_one + i) > 0 then %>
+                            <% if i == 0 %>
+                                <li><%= @page_one + i %></li>
+                            <% else %>
+                                <li><a href= "/osusumes/index?page=<%= @page + i %>"><%= @page_one + i %></a></li>
+                            <% end %>
+                            <% iCnt += 1 %>
+                        <% end %>
+                    <% end %>
+                    <% if iCnt != @page_one then  %>
+                        <li><a href="/osusumes/index?page=<%= @page + 1 %>">次の10件</a></li>
+                    <% end %>
+                    <% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'jquery.js' %>   
+    <%= javascript_include_tag 'js/bootstrap.min.js'%>
+    <%= javascript_include_tag 'jquery.raty.min.js' %>
+	<script>
+        $(function(){
+            $("#osusume_url").val("URLを入力").css("color","#CCC")
+                      .one("focus",function(){
+                            $(this).val("").css("color","#000");
+                      }).blur(function(){
+                                if($(this).val()==""){
+                                    $(this).val("URLを入力").css("color","#CCC")
+                                            .one("focus",function(){
+                                        $(this).val("").css("color","#000");
+                                    });
+                                }
+            });
+        });
+        
+        
+        <%
+            i=0
+            while i < @osusumes.length
+        %>
+        $(function(){
+            $(".kuchikomi<%=i%>").css("display","none");
+            $(".kuchiopen<%=i%>").click(function(){
+                if($(".kuchikomi<%=i%>").css("display")=="block"){
+                        $(".kuchikomi<%=i%>").slideUp("normal");
+                        $(".kuchiopen<%=i%> span").text("開く　▼");
+                    }else{
+                        $(".kuchikomi<%=i%>").slideDown("slow");
+                        $(".kuchiopen<%=i%> span").text("閉じる▲");
+                    }
+                });
+        });
+        <%
+            i += 1
+            end
+        %>
+	</script>
+</body>

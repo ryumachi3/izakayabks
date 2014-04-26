@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type"
+		content="text/html;charset=utf-8" />
+	<title>イザカヤブックマーク</title>
+    <%= stylesheet_link_tag 'izakaya.css' %>
+    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+		</div>
+
+		<div class="menu">
+			<ul>
+				<li><a href="index.html" class="othermenu">TOP</a></li>
+				<li><a href="kaisyalist.html" class="othermenu">会社で使ったお店</a></li>
+				<li><a href="#" class="selectmenu">個人的なオススメ！</a></li>
+			    <li><a href="#" class="othermenu">みんなの名前</a></li> 
+			</ul>
+		</div>
+		<div class="hukidashi" style="margin-left:295px">
+		</div>
+
+		<div class="post">
+			<hr>
+			<div class="posttext">
+  			<% @users.each_with_index do |user, count| %>
+			<%=
+	            smileimg = 'smiler.png'
+                imgclass = 'smiler'
+			%>
+			<%= user.user_name %><%= image_tag smileimg, :width => '50', :height => '50', :class => imgclass %>
+						 <div class="userdel">
+                         <%= link_to '×', user_path(user), :confirm => 'この名前を
+ 削除しますか？', :method => :delete %>
+                         </div>
+			<div class="updellink">
+			    <%= link_to '編集', user_path(user) %>
+            </div>
+			<hr>
+		<% end %>
+			</div>
+		</div>
+	</div>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'jquery.js' %>   
+    <%= javascript_include_tag 'js/bootstrap.min.js'%>
+    <%= javascript_include_tag 'jquery.raty.min.js' %>
+</body>
