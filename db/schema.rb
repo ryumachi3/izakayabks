@@ -11,12 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104110416) do
+ActiveRecord::Schema.define(:version => 20140324221503) do
+
+  create_table "colors", :id => false, :force => true do |t|
+    t.string "color"
+  end
 
   create_table "genres", :force => true do |t|
     t.string   "genre_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "genres_osusumes", :id => false, :force => true do |t|
+    t.integer "osusume_id"
+    t.integer "genre_id"
   end
 
   create_table "genres_shops", :id => false, :force => true do |t|
@@ -39,10 +48,21 @@ ActiveRecord::Schema.define(:version => 20131104110416) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "osusume_people", :id => false, :force => true do |t|
-    t.string   "osusume_person_name"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+  create_table "osusumes", :force => true do |t|
+    t.string   "url"
+    t.string   "shopname"
+    t.string   "moyori_station_id"
+    t.integer  "yosa_count",        :default => 0, :null => false
+    t.text     "memo"
+    t.integer  "kojin_hyouka"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "osusumes_tags", :id => false, :force => true do |t|
+    t.string  "tag"
+    t.integer "osusume_id"
   end
 
   create_table "shops", :force => true do |t|
@@ -66,11 +86,11 @@ ActiveRecord::Schema.define(:version => 20131104110416) do
   end
 
   create_table "tsubuyakis", :force => true do |t|
-    t.integer  "shop_id"
-    t.string   "tsubu_person_name"
+    t.integer  "osusume_id"
     t.text     "tsubu_text"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "use_rirekis", :force => true do |t|
@@ -83,5 +103,12 @@ ActiveRecord::Schema.define(:version => 20131104110416) do
   end
 
   add_index "use_rirekis", ["shop_id"], :name => "index_use_rirekis_on_shop_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "user_name"
+    t.string   "color"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
