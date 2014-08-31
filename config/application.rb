@@ -61,6 +61,8 @@ module Izakaya
 
 	# TuikaCode
 	config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
- 
+
+    # izakaya add
+    config.assets.precompile += ['jquery.simple-color-picker.css', 'jquery.simple-color-picker.js'] 
   end
 end

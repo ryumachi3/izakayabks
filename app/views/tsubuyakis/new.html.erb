@@ -4,21 +4,20 @@
 	<meta http-equiv="Content-Type"
 		content="text/html;charset=utf-8" />
 	<title>イザカヤブックマーク</title>
-    <%= stylesheet_link_tag 'kaisyaadd.css' %>
-    <%= stylesheet_link_tag 'kaisyarireki.css' %>
-    <%= stylesheet_link_tag 'bootstrap/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+			<h1><a href="/top">イザカヤブックマーク</a></h1>
 		</div>
 
 		<div class="menu">
 			<ul>
-				<li><a href="index.html" class="othermenu">TOP</a></li>
-				<li><a href="#" class="selectmenu">会社で使ったお店</a></li>
-				<li><a href="osusumelist.html" class="othermenu">個人的なオススメ！</a></li>
+                                <li><a href="/top" class="othermenu">TOP</a></li>
+                                <li><a href="/kaisya/index" class="othermenu">会社で使ったお店</a></li>
+                                <li><a href="/osusumes" class="selectmenu">個人的なオススメ！</a></li>
+                                <li><a href="/users" class="othermenu">みんなの名前</a></li>
 			</ul>
 		</div>
 		<div class="hukidashi" style="margin-left:175px">
@@ -38,11 +37,12 @@
                 <% end %>
              <h2 class="shopname"><%= @osusume.shopname %></h2>
 			</tr>
-			<table border="1" summary="追加項目" class="additem">
+			<table border="1" summary="追加項目" class="edit">
 			<tr>
 				<th width="140px">あなたの名前<span class="need">*</span></th>
 				<td width="530px">
 					<%= f.collection_select( :user_id,@users,:id,:user_name) %>
+				<%= link_to "←あなたの名前を追加", { :controller => 'users', :action => 'new'} %>
 				</td>
 			</tr>
 			<tr>
@@ -62,8 +62,6 @@
 		</div>
 	</div>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag 'jquery.js' %>
-    <%= javascript_include_tag 'js/bootstrap.min.js'%>
 	<script>
 	</script>
 </body>

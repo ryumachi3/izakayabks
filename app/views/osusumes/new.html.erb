@@ -4,19 +4,20 @@
 	<meta http-equiv="Content-Type"
 		content="text/html;charset=utf-8" />
 	<title>イザカヤブックマーク</title>
-	<%= stylesheet_link_tag    "application" %>
+	<%= stylesheet_link_tag  'application' %>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+			<h1><a href="/top">イザカヤブックマーク</a></h1>
 		</div>
 
 		<div class="menu">
 			<ul>
-				<li><a href="../kaisya/top.html" class="othermenu">TOP</a></li>
-				<li><a href="../kaisya/index.html" class="othermenu">会社で使ったお店</a></li>
-				<li><a href="index.html" class="selectmenu">個人的なオススメ！</a></li>
+                                <li><a href="/top" class="othermenu">TOP</a></li>
+                                <li><a href="/kaisya/index" class="othermenu">会社で使ったお店</a></li>
+                                <li><a href="/osusumes" class="selectmenu">個人的なオススメ！</a></li>
+                                <li><a href="/users" class="othermenu">みんなの名前</a></li>
 			</ul>
 		</div>
 		<div class="hukidashi" style="margin-left:295px">
@@ -34,14 +35,16 @@
 					</ul>
 				</div>
 			<% end %>
-			<table border="1" summary="追加項目" class="additem">
+			<table border="1" summary="追加項目" class="edit">
 			<tr>
 				<th width="140px">お店のURL<span class="need">*</span></th>
 				<td width="530px"><%= f.text_field :url %></td>
 			</tr>
 			<tr>
 				<th>あなたの名前<span class="need">*</span></th>
-				<td><%= f.collection_select( :user_id,@users,:id,:user_name) %></td>
+				<td><%= f.collection_select( :user_id,@users,:id,:user_name) %>
+	                        <%= link_to "←あなたの名前を追加", { :controller => 'users', :action => 'new'} %> 
+				 </td>
 			</tr>
 			<tr>
 				<th>お店の名前<span class="need">*</span></th>
@@ -59,12 +62,14 @@
 					<span class="setsumei">1つ以上選択してください</span>
 				</th>
 				<td>
-		     	   <% @genres.each do |genre| %>
-				           <%= f.check_box :genre_ids,
+		     	   		<% @genres.each do |genre| %>
+				        <label>
+					   <%= f.check_box :genre_ids,
 				           {:checked => @osusume.genres.include?(genre),
 				            :name => "osusume[genre_ids][]"}, genre.id,"" %>
-							<%= f.label :genre_ids, genre.genre_name %> 
-				   <% end %>
+				  	   <%= genre.genre_name %>
+					   <% end %>
+					</label>
 				</td>
 			</tr>
 			<tr>
@@ -99,9 +104,6 @@
 		</div>
 	</div>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag 'jquery.js' %>
-    <%= javascript_include_tag 'js/bootstrap.min.js'%>
-    <%= javascript_include_tag 'jquery.raty.min.js' %>
 	<script>
     $('#kojin_hyouka').raty({
         size     : 36,

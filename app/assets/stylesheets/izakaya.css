@@ -255,4 +255,51 @@ table.rireki td.delbtn a:hover {color: #ff0000;
 	margin-bottom: 15px;
 }
 
+table.edit                   {border-color: #f0f0f0;
+                                font-size: 0.8em;
+                                border-left: none;
+                                border-right: none;
+                                width: 680px;
+                                margin-top: 0px;
+                                margin-bottom: 15px;}
+
+table.edit th,td                   {border-left:none;
+                                border-right:none;
+                                padding: 10px 10px;
+                                text-align: left;}
+
+table.edit th                      {font-size: 0.8em;
+                        background-color: #c0c0c0;}
+
+#error_explantion       {color: #ff0000;}
+
+.need           {color: #ff0000;}
+
+.setsumei       {color: #a9a9a9;}
+
+#shop_url,#osusume_url  {width: 510px;}
+
+span.star       {font-size: 2em;}
+
+.space          {clear: both;}
+
+.btnarea        {text-align: center;
+                        padding-top:  15px;
+                        padding-bottom: 15px;
+                        background-color: #c0c0c0;}
+
+#shop_use_rirekis_attributes_0_use_day_1i       {width: 80px;}
+#shop_use_rirekis_attributes_0_use_day_2i       {width: 60px;}
+#shop_use_rirekis_attributes_0_use_day_3i       {width: 60px;}
+
+#shop_use_rirekis_attributes_0_use_number       {width: 60px;}
+
+textarea #kuchikomi {width:300px;}
+textarea #osusume_memo {width:300px;}
+
+h2.shopname	{
+	margin: 0;
+	background-color:#000000;
+	color:	#ffffff;
+}
 

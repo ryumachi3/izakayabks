@@ -9,7 +9,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+			<h1><a href="/top">イザカヤブックマーク</a></h1>
 		</div>
 
 		<div id="addheader">
@@ -31,9 +31,10 @@
 
 		<div class="menu">
 			<ul>
-				<li><a href="index.html" class="othermenu">TOP</a></li>
-				<li><a href="kaisyalist.html" class="othermenu">会社で使ったお店</a></li>
-				<li><a href="#" class="selectmenu">個人的なオススメ！</a></li>
+                                <li><a href="/top" class="othermenu">TOP</a></li>
+                                <li><a href="/kaisya/index" class="othermenu">会社で使ったお店</a></li>
+                                <li><a href="/osusumes" class="selectmenu">個人的なオススメ！</a></li>
+                                <li><a href="/users" class="othermenu">みんなの名前</a></li>
 			</ul>
 		</div>
 		<div class="hukidashi" style="margin-left:295px">
@@ -202,12 +203,12 @@
     <%= javascript_include_tag "application" %>
 	<script>
         $(function(){
-            $("#osusume_url").val("URLを入力").css("color","#CCC")
+            $("#osusume_url").val("お店のURLを入力").css("color","#CCC")
                       .one("focus",function(){
                             $(this).val("").css("color","#000");
                       }).blur(function(){
                                 if($(this).val()==""){
-                                    $(this).val("URLを入力").css("color","#CCC")
+                                    $(this).val("お店のURLを入力").css("color","#CCC")
                                             .one("focus",function(){
                                         $(this).val("").css("color","#000");
                                     });

@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="post">
-			<h2>あなたの名前 追加</h2>
+			<h2>あなたの名前 編集</h2>
 			<%= form_for(@user) do |f| %>
 			<% if @user.errors.any?%>
 				<div id="error_explantion">
@@ -64,7 +64,7 @@
 		<strong>* 必須入力</strong>
 		</p>
 		<div class="btnarea">
-			<%= f.submit 'あなたの名前を追加する', {:class => 'btn btn-info addbtn'} %>
+			<%= f.submit '変更を保存する', {:class => 'btn btn-info addbtn'} %>
 		</div>	
 		<% end %>	
 		</div>

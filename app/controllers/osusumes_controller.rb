@@ -41,11 +41,16 @@ class OsusumesController < ApplicationController
 	end
 	def create
 		@osusume = Osusume.new(params[:osusume])
+		#評価がNULLの場合は0に置き換え
+		if @osusume.kojin_hyouka == nil then
+		    @osusume.kojin_hyouka = 0;
+		end
+	
 		tagsArr = params[:taguzuke].gsub(/　/," ").split(nil)		
 		tagsArr.each do |tag|
     		@osusume.osusumes_tags.build(:tag => tag)
 		end
-
+	
 		respond_to do |format|
 			if @osusume.save
 				format.html { redirect_to :action => "index" }

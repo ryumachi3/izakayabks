@@ -23,6 +23,10 @@ star-on.png: star-on-5f1bbca2093b22e1d0a6f907600c106b.png
 star-on/index.png: star-on-5f1bbca2093b22e1d0a6f907600c106b.png
 application.js: application-173404db15ca3834de17b954aa71d088.js
 application/index.js: application-173404db15ca3834de17b954aa71d088.js
+jquery.simple-color-picker.css: jquery.simple-color-picker-63400252e719594223b1d2ac4b5f88e2.css
+jquery/index.simple-color-picker.css: jquery.simple-color-picker-63400252e719594223b1d2ac4b5f88e2.css
+jquery.simple-color-picker.js: jquery.simple-color-picker-41fe14d481df51e2d9b64a254f430a55.js
+jquery/index.simple-color-picker.js: jquery.simple-color-picker-41fe14d481df51e2d9b64a254f430a55.js
 lib/img/cancel-off.png: lib/img/cancel-off-fc7f4f931153d25868a6fea5e80d119d.png
 lib/img/cancel-off/index.png: lib/img/cancel-off-fc7f4f931153d25868a6fea5e80d119d.png
 lib/img/cancel-on.png: lib/img/cancel-on-a77f3c3c125b0817085648f284c98938.png
@@ -35,8 +39,8 @@ lib/img/star-on.png: lib/img/star-on-5f1bbca2093b22e1d0a6f907600c106b.png
 lib/img/star-on/index.png: lib/img/star-on-5f1bbca2093b22e1d0a6f907600c106b.png
 yokaup.js.erb_: yokaup.js-ceafb088d57ccac5d8cbeacb431271ab.erb_
 yokaup/index.js.erb_: yokaup.js-ceafb088d57ccac5d8cbeacb431271ab.erb_
-application.css: application-e376a5e1f9e22758731e0f51d3db6925.css
-application/index.css: application-e376a5e1f9e22758731e0f51d3db6925.css
+application.css: application-3ba0a5229ab48290153594d949752c8f.css
+application/index.css: application-3ba0a5229ab48290153594d949752c8f.css
 bootstrap/img/glyphicons-halflings-white.png: bootstrap/img/glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 bootstrap/img/glyphicons-halflings-white/index.png: bootstrap/img/glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 bootstrap/img/glyphicons-halflings.png: bootstrap/img/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png

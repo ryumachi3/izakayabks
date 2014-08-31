@@ -9,14 +9,15 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><a href="kaisyalist.html">イザカヤブックマーク</a></h1>
+			<h1><a href="/top">イザカヤブックマーク</a></h1>
 		</div>
 
 		<div class="menu">
 			<ul>
-				<li><a href="index.html" class="othermenu">TOP</a></li>
-				<li><a href="kaisyalist.html" class="selectmenu">会社で使ったお店</a></li>
-				<li><a href="#" class="othermenu">個人的なオススメ！</a></li>
+				<li><a href="/top" class="othermenu">TOP</a></li>
+				<li><a href="/kaisya/index" class="othermenu">会社で使ったお店</a></li>
+				<li><a href="/osusumes" class="selectmenu">個人的なオススメ！</a></li>
+				<li><a href="/users" class="othermenu">みんなの名前</a></li>
 			</ul>
 		</div>
 		<div class="hukidashi" style="margin-left:295px">
@@ -41,7 +42,8 @@
 			</tr>
 			<tr>
 				<th>あなたの名前<span class="need">*</span></th>
-				<td width="530px"><%= f.collection_select( :user_id,@users,:id,:user_name) %></td>
+				<td width="530px"><%= f.collection_select( :user_id,@users,:id,:user_name) %>
+				<%= link_to "←あなたの名前を追加", { :controller => 'users', :action => 'new'} %></td>
 			</tr>
 			<tr>
 				<th>お店の名前<span class="need">*</span></th>
@@ -100,14 +102,15 @@
 		</div>
 	</div>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag 'jquery.js' %>
-    <%= javascript_include_tag 'js/bootstrap.min.js'%>
-    <%= javascript_include_tag 'jquery.raty.min.js' %>
 	<script>
     $('#kojin_hyouka').raty({
 		size     : 36,
+		 <% if @osusume.kojin_hyouka == nil then %>
+		score    : 0,
+		<% else %>
 		score    : <%= @osusume.kojin_hyouka %>,
-        starOff: '/assets/star-off.png',
+        	<% end %>
+	starOff: '/assets/star-off.png',
         starOn : '/assets/star-on.png',
         scoreName: 'osusume[kojin_hyouka]' 
     });
